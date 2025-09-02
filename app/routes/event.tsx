@@ -22,14 +22,3 @@ export default function EventDetail() {
         </div>
     );
 }
-type EventProps = {
-    event: {
-        eventType: string;
-        eventMagnitude: string;
-        state: string;
-        county: string;
-        location: string;
-        date: string;
-        status: string;
-    };
-};

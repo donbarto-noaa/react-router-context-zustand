@@ -10,5 +10,11 @@ export default [
             // route("new", "routes/event.new.tsx"),
             // route("edit", "routes/event.edit.tsx")
             
-  ]  )
+  ]  ),
+  route("training", "routes/training.tsx", [
+    index("routes/training._index.tsx"),
+    route("context-demo", "routes/training.context-demo.tsx"),
+    route("zustand-demo", "routes/training.zustand-demo.tsx"),
+    route("combined-demo", "routes/training.combined-demo.tsx"),
+  ]),
 ] satisfies RouteConfig;
