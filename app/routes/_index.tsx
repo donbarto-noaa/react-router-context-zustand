@@ -40,6 +40,19 @@ export default function Index() {
               <li>• Hands-on exercises</li>
             </ul>
           </div>
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl font-semibold mb-4 text-blue-600 dark:text-blue-400">
+              🧠 Events Pages Mock Ups and Sandbox
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
+              A place to try development stategies for this stack
+            </p>
+            <Link
+              to="/events"
+              className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors"
+            >Events Pages
+            </Link>
+          </div>
         </div>
         
         <div className="mt-12 text-center">

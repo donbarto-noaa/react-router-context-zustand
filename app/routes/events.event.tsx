@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 // If WEATHER_EVENT_DATA is not available here, you may need to import it from events.tsx or move it to a shared file.
-import { WEATHER_EVENT_DATA } from "./events"; // Corrected to keep the named import
+import { WEATHER_EVENT_DATA } from "./events.events"; // Corrected to keep the named import
 
 
 export default function EventDetail() {
