@@ -7,6 +7,7 @@ export default [
       route("context-demo", "routes/training.context-demo.tsx"),
       route("zustand-demo", "routes/training.zustand-demo.tsx"),
       route("combined-demo", "routes/training.combined-demo.tsx"),
+      route("maplibre-demo", "routes/training.maplibre-demo.tsx"),
     ]),    
     route("events", "routes/events.tsx", [
             index("routes/events._index.tsx"),

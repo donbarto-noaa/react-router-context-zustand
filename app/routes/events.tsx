@@ -12,8 +12,8 @@ export default function EventsLayout() {
               <h1 className="text-2xl font-bold mb-4">Events Pages</h1>
               <div className="flex gap-4">
                 <Link to="../events/" className="hover:underline">Events Main</Link>
-                <Link to="../events/events" className="hover:underline">Events</Link>
                 <Link to="../events/about" className="hover:underline">About</Link>
+                <Link to="../events/events" className="hover:underline">Events</Link>
                 <Link to="../events/observations" className="hover:underline">Observations</Link>
               </div>
             </div>
