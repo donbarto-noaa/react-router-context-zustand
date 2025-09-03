@@ -15,6 +15,7 @@ export default function TrainingLayout() {
                 <Link to="/training/context-demo" className="hover:underline">Context Demo</Link>
                 <Link to="/training/zustand-demo" className="hover:underline">Zustand Demo</Link>
                 <Link to="/training/combined-demo" className="hover:underline">Combined Demo</Link>
+                <Link to="/training/maplibre-demo" className="hover:underline">Maplibre Demo</Link>
               </div>
             </div>
           </nav>
