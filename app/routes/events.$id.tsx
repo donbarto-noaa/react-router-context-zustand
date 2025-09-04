@@ -1,11 +1,12 @@
 import { useParams } from "react-router";
-// If WEATHER_EVENT_DATA is not available here, you may need to import it from events.tsx or move it to a shared file.
-import { WEATHER_EVENT_DATA } from "./events.events"; // Corrected to keep the named import
 
+import MOCK_WEATHER_EVENTS from "../MOCK_WEATHER_EVENTS.json";
+
+const WEATHER_EVENT_DATA = MOCK_WEATHER_EVENTS;
 
 export default function EventDetail() {
-    const { id } = useParams();
-        const event = WEATHER_EVENT_DATA.find(e => e.id === String(id));
+    const { eventId } = useParams();
+    const event = WEATHER_EVENT_DATA.find(e => e.id === eventId);
 
     if (!event) {
         return <div>Event not found.</div>;

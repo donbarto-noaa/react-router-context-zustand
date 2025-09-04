@@ -3,7 +3,7 @@ export default function TrainingIndex() {
     <div className="max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">Client State Management Training</h1>
       
-      <div className="grid md:grid-cols-4 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
         <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
           <h2 className="text-xl font-semibold mb-3">2.1 React Context (2 hours)</h2>
           <ul className="space-y-2 text-sm">
@@ -53,6 +53,23 @@ export default function TrainingIndex() {
             Start MapLibre Training →
           </a>
         </div>
+        
+        <div className="bg-purple-100 dark:bg-purple-800 p-6 rounded-lg">
+          <h2 className="text-xl font-semibold mb-3">4.0 Tailwind CSS v4 (6 hours)</h2>
+          <ul className="space-y-2 text-sm">
+            <li>🎨 Utility-first approach</li>
+            <li>📱 Responsive layouts</li>
+            <li>🌍 Flexbox & Grid systems</li>
+            <li>🎭 Component patterns</li>
+            <li>✨ Interactive states</li>
+          </ul>
+          <a 
+            href="/training/tailwind-demo" 
+            className="inline-block mt-3 bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded text-sm"
+          >
+            Start Tailwind Training →
+          </a>
+        </div>
       </div>
       
       <div className="mt-8 p-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
@@ -80,6 +97,14 @@ export default function TrainingIndex() {
               <li>• Interactive mapping</li>
               <li>• React lifecycle integration</li>
               <li>• State synchronization</li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-medium mb-2">Tailwind CSS v4</h4>
+            <ul className="text-sm space-y-1">
+              <li>• Utility-first styling</li>
+              <li>• Responsive design</li>
+              <li>• Component patterns</li>
             </ul>
           </div>
         </div>

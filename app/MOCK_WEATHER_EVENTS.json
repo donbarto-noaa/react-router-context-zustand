@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1",
+    "eventType": "Tornado",
+    "eventMagnitude": 3.0,
+    "state": "Oklahoma",
+    "county": "Cleveland County",
+    "location": "Moore",
+    "date": "2024-05-20",
+    "status": "Pub"
+  },
+  {
+    "id": "2",
+    "eventType": "Wildfire",
+    "eventMagnitude": 8.5,
+    "state": "California",
+    "county": "Los Angeles County",
+    "location": "Malibu",
+    "date": "2024-08-15",
+    "status": "PNS"
+  },
+  {
+    "id": "3",
+    "eventType": "Earthquake",
+    "eventMagnitude": 6.5,
+    "state": "Alaska",
+    "county": "Anchorage",
+    "location": "Anchorage",
+    "date": "2024-03-10",
+    "status": "SUM"
+  },
+  {
+    "id": "4",
+    "eventType": "Hurricane",
+    "eventMagnitude": 4.0,
+    "state": "Florida",
+    "county": "Miami-Dade County",
+    "location": "Miami",
+    "date": "2024-09-28",
+    "status": "NEW"
+  },
+  {
+    "id": "5",
+    "eventType": "Flood",
+    "eventMagnitude": 9.2,
+    "state": "Louisiana",
+    "county": "Orleans Parish",
+    "location": "New Orleans",
+    "date": "2024-07-04",
+    "status": "LSR"
+  }
+]
