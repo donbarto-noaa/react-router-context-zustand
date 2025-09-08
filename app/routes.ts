@@ -10,6 +10,7 @@ export default [
       route("maplibre-demo", "routes/training.maplibre-demo.tsx"),
       route("tailwind-demo", "routes/training.tailwind-demo.tsx"),
       route("events-enhanced", "routes/training.events-enhanced.tsx"),
+      route("msw-demo", "routes/training.msw-demo.tsx"),
     ]),    
     route("events", "routes/events.tsx", [
             index("routes/events._index.tsx"),
