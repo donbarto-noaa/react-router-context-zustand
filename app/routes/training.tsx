@@ -18,6 +18,7 @@ export default function TrainingLayout() {
                 <Link to="/training/maplibre-demo" className="hover:underline">Maplibre Demo</Link>
                 <Link to="/training/tailwind-demo" className="hover:underline">Tailwind Demo</Link>
                 <Link to="/training/events-enhanced" className="hover:underline">Enhanced Events</Link>
+                <Link to="/training/weather-dashboard" className="hover:underline">Weather Dashboard</Link>
               </div>
             </div>
           </nav>

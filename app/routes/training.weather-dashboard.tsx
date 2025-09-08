@@ -1,39 +1,44 @@
-import { useLoaderData, useFetcher, useRevalidator } from 'react-router';
-import { useState } from 'react';
-import type { Route } from './+types/training.weather-dashboard';
-
-// Loader function - fetches data using MSW
-export async function loader(): Promise<Route.LoaderData> {
-  try {
-    const [eventsResponse, stationsResponse] = await Promise.all([
-      fetch('/api/weather-events?limit=8'),
-      fetch('/api/weather-stations?limit=4')
-    ]);
-
-    if (!eventsResponse.ok || !stationsResponse.ok) {
-      throw new Error('Failed to fetch data');
-    }
-
-    const [eventsData, stationsData] = await Promise.all([
-      eventsResponse.json(),
-      stationsResponse.json()
-    ]);
-
-    return {
-      events: eventsData.data,
-      stations: stationsData.data,
-      timestamp: new Date().toISOString()
-    };
-  } catch (error) {
-    throw new Response('Failed to load weather data', { status: 500 });
-  }
-}
+import { useFetcher } from 'react-router';
+import { useState, useEffect } from 'react';
 
 export default function WeatherDashboard() {
-  const { events, stations, timestamp } = useLoaderData<Route.LoaderData>();
-  const fetcher = useFetcher();
-  const revalidator = useRevalidator();
+  const [data, setData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const fetcher = useFetcher();
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [eventsResponse, stationsResponse] = await Promise.all([
+          fetch('/api/weather-events?limit=8'),
+          fetch('/api/weather-stations?limit=4')
+        ]);
+        
+        const [eventsData, stationsData] = await Promise.all([
+          eventsResponse.json(),
+          stationsResponse.json()
+        ]);
+        
+        setData({
+          events: eventsData.data,
+          stations: stationsData.data,
+          timestamp: new Date().toISOString()
+        });
+      } catch (error) {
+        console.error('Failed to fetch data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchData();
+  }, []);
+  
+  if (loading) return <div className="p-8 text-center">Loading...</div>;
+  if (!data) return <div className="p-8 text-center">Failed to load data</div>;
+  
+  const { events, stations, timestamp } = data;
 
   const handleCreateEvent = () => {
     fetcher.submit(
@@ -75,11 +80,10 @@ export default function WeatherDashboard() {
             </div>
             <div className="flex items-center space-x-3">
               <button
-                onClick={() => revalidator.revalidate()}
-                disabled={revalidator.state === 'loading'}
-                className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg text-sm font-medium"
+                onClick={() => window.location.reload()}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"
               >
-                {revalidator.state === 'loading' ? 'Refreshing...' : 'Refresh Data'}
+                Refresh Data
               </button>
               <button
                 onClick={handleCreateEvent}
