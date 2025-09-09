@@ -27,6 +27,7 @@ export default function Index() {
             >
               Start Training →
             </Link>
+       
           </div>
           
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
