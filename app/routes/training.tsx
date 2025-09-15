@@ -21,13 +21,39 @@ export default function TrainingLayout() {
                   Overview
                 </Link>
                 <Link 
-                  url={`${urlRoot}/training/context-demo`}>Context Demo</Link>
-                <Link to="/training/zustand-demo" className="hover:underline">Zustand Demo</Link>
-                <Link to="/training/combined-demo" className="hover:underline">Combined Demo</Link>
-                <Link to="/training/maplibre-demo" className="hover:underline">Maplibre Demo</Link>
-                <Link to="/training/tailwind-demo" className="hover:underline">Tailwind Demo</Link>
-                <Link to="/training/events-enhanced" className="hover:underline">Enhanced Events</Link>
-                <Link to="/training/weather-dashboard" className="hover:underline">Weather Dashboard</Link>
+                  url={`${urlRoot}/training/context-demo`} isExternal={false}
+                  target='_self' >Context Demo</Link>
+                <Link  
+                  url={`${urlRoot}/training//recoil-demo`} 
+                  isExternal={false}
+                  target='_self'
+                  >Recoil Demo</Link>
+                <Link 
+                  url={`${urlRoot}/training/zustand-demo`} 
+                  isExternal={false}
+                  target='_self'
+                  >Zustand Demo</Link>
+                <Link 
+                  url={`${urlRoot}/training/combined-demo`} 
+                  isExternal={false}
+                  target='_self' 
+                  >Combined Demo</Link>
+                <Link  
+                  url={`${urlRoot}/training//maplibre-demo`} 
+                  isExternal={false}
+                  target='_self'>Maplibre Demo</Link>
+                <Link 
+                  url={`${urlRoot}/training/tailwind-demo`} 
+                  isExternal={false}
+                  target='_self'>Tailwind Demo</Link>
+                <Link 
+                  url={`${urlRoot}/training/events-enhanced`} 
+                  isExternal={false}
+                  target='_self'>Enhanced Events</Link>
+                <Link 
+                  url={`${urlRoot}/training/weather-dashboard`} 
+                  isExternal={false}
+                  target='_self' >Weather Dashboard</Link>
               </div>
             </div>
           </nav>
