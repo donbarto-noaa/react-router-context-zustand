@@ -1,6 +1,9 @@
-import { Link, Outlet } from 'react-router';
+import { Outlet } from 'react-router';
 import { ThemeProvider } from '~/contexts/ThemeContext';
 import { AuthProvider } from '~/contexts/AuthContext';
+import { Link } from 'atmosphere';
+
+const urlRoot = window.location.origin;
 
 export default function TrainingLayout() {
   return (
@@ -11,8 +14,14 @@ export default function TrainingLayout() {
             <div className="container mx-auto">
               <h1 className="text-2xl font-bold mb-4">State Management Training</h1>
               <div className="flex gap-4">
-                <Link to="/training" className="hover:underline">Overview</Link>
-                <Link to="/training/context-demo" className="hover:underline">Context Demo</Link>
+                <Link 
+                  url={`${urlRoot}/training`}
+                  isExternal={false}
+                  target='_self' >
+                  Overview
+                </Link>
+                <Link 
+                  url={`${urlRoot}/training/context-demo`}>Context Demo</Link>
                 <Link to="/training/zustand-demo" className="hover:underline">Zustand Demo</Link>
                 <Link to="/training/combined-demo" className="hover:underline">Combined Demo</Link>
                 <Link to="/training/maplibre-demo" className="hover:underline">Maplibre Demo</Link>

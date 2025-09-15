@@ -1,8 +1,7 @@
 import { useFetcher } from 'react-router';
 import { useState, useEffect } from 'react';
-// Font Awesome kit is loaded globally via <script> in root layout. Use <i className="fa-solid fa-cloud"></i> or official React package for icons.
-// Font Awesome kit is loaded globally; use <i> tags for icons
 import { Modal, IconButton } from 'atmosphere';
+import type { IconButtonProps } from 'atmosphere';
 
 export default function WeatherDashboard() {
   const [data, setData] = useState<any>(null);
@@ -287,9 +286,10 @@ export default function WeatherDashboard() {
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{selectedEvent.eventType}</h3>
                   <IconButton
                     onPress={() => setSelectedEvent(null)}
-                    className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                    color='secondary'
+                    variant='filled'
                   >
-                    <i className="fa-solid fa-times"></i>
+                    <i className="fa-solid fa-xmark-large"></i>
                   </IconButton>
                 </div>
                 <div className="space-y-3 text-sm">
