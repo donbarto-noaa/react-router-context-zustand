@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
+import { Button } from 'atmosphere';
 
 export default function MSWDemo() {
+  
   return (
     <div className="max-w-7xl mx-auto space-y-8 p-6">
       <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Mock Service Worker (MSW) Training</h1>
@@ -266,34 +269,34 @@ function Phase2Integration() {
             <div className="p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded">
               <h4 className="font-medium text-indigo-900 dark:text-indigo-100 mb-2">React Router Loaders</h4>
               <p className="code">
-{`export async function loader() {
-  const response = await fetch('/api/weather-events');
-  return response.json();
-}`}
+                {`export async function loader() {
+                  const response = await fetch('/api/weather-events');
+                  return response.json();
+                }`}
               </p>
             </div>
             
             <div className="p-3 bg-teal-50 dark:bg-teal-900/20 rounded">
               <h4 className="font-medium text-teal-900 dark:text-teal-100 mb-2">useEffect Pattern</h4>
               <p className="code">
-{`useEffect(() => {
-  fetch('/api/weather-events')
-    .then(res => res.json())
-    .then(setData);
-}, []);`}
+                {`useEffect(() => {
+                  fetch('/api/weather-events')
+                    .then(res => res.json())
+                    .then(setData);
+                }, []);`}
               </p>
             </div>
             
             <div className="p-3 bg-orange-50 dark:bg-orange-900/20 rounded">
               <h4 className="font-medium text-orange-900 dark:text-orange-100 mb-2">Error Handling</h4>
               <p className="code">
-{`try {
-  const response = await fetch('/api/endpoint');
-  if (!response.ok) throw new Error('Failed');
-  const data = await response.json();
-} catch (error) {
-  setError(error.message);
-}`}
+                {`try {
+                  const response = await fetch('/api/endpoint');
+                  if (!response.ok) throw new Error('Failed');
+                  const data = await response.json();
+                } catch (error) {
+                  setError(error.message);
+                }`}
               </p>
             </div>
           </div>
@@ -304,6 +307,7 @@ function Phase2Integration() {
 }
 
 function Phase3Practice() {
+  const navigate = useNavigate();
   return (
     <section className="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg">
       <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Phase 3: Practical Exercise (2 hours)</h2>
@@ -338,13 +342,14 @@ function Phase3Practice() {
           </div>
           
           <div className="mt-4">
-            <a
-              href="/training/weather-dashboard"
-              className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium"
-            >
-              Start Exercise →
-            </a>
-          </div>
+             <Button 
+                color="accent"
+                variant="filled"
+                onPress={() => navigate('/training/weather-dashboard')}
+              >
+                Start Exercise →
+              </Button>
+            </div>
         </div>
         
         <div className="bg-white dark:bg-gray-800 p-6 rounded-lg">
