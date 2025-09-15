@@ -17,7 +17,8 @@ A modern, production-ready template for building full-stack React applications u
 ## Getting Started
 
 ### Installation
-
+ Until npm package registry is complete, you will need to download the Atmosphere repo, then run `npm run build` and `npm pack`.  This will generate the exports locaaly and they will be imported via this line- update path as needed.
+ 
 Install the dependencies:
 
 ```bash

@@ -17,7 +17,7 @@
     "@awesome.me/kit-660a04e2d9": "^1.0.97",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
-    "atmosphere": "file:../../atmosphere-dev/atmosphere/atmosphere-0.9.1-dev.tgz",
+    "atmosphere": "file:../../atmosphere-dev/atmosphere/atmosphere-0.9.1-dev.tgz", 
     "faker": "^6.6.6",
     "isbot": "^5.1.27",
     "maplibre-gl": "^5.7.0",
