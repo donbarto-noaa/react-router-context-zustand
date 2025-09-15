@@ -92,23 +92,23 @@ function Phase1Fundamentals() {
           <div className="space-y-3 text-sm">
             <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded">
               <h4 className="font-medium mb-2">1. Install Dependencies</h4>
-              <code className="text-xs bg-gray-800 text-green-400 p-2 rounded block">
+              <p className="code">
                 npm install msw @mswjs/data faker
-              </code>
+              </p>
             </div>
             
             <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded">
               <h4 className="font-medium mb-2">2. Initialize Service Worker</h4>
-              <code className="text-xs bg-gray-800 text-green-400 p-2 rounded block">
+              <p className="code">
                 npx msw init public/ --save
-              </code>
+              </p>
             </div>
             
             <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded">
               <h4 className="font-medium mb-2">3. Start MSW in Browser</h4>
-              <code className="text-xs bg-gray-800 text-green-400 p-2 rounded block">
+              <p className="code">
                 worker.start()
-              </code>
+              </p>
             </div>
           </div>
         </div>
@@ -120,7 +120,7 @@ function Phase1Fundamentals() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div>
             <h4 className="font-medium mb-2">GET Handler</h4>
-            <pre className="text-xs bg-gray-900 text-green-400 p-3 rounded overflow-x-auto">
+            <pre className="code">
 {`http.get('/api/weather-events', ({ request }) => {
   const url = new URL(request.url);
   const limit = url.searchParams.get('limit');
@@ -135,7 +135,7 @@ function Phase1Fundamentals() {
           
           <div>
             <h4 className="font-medium mb-2">POST Handler</h4>
-            <pre className="text-xs bg-gray-900 text-green-400 p-3 rounded overflow-x-auto">
+            <pre className="code">
 {`http.post('/api/weather-events', async ({ request }) => {
   const newEvent = await request.json();
   
@@ -265,28 +265,28 @@ function Phase2Integration() {
           <div className="space-y-4">
             <div className="p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded">
               <h4 className="font-medium text-indigo-900 dark:text-indigo-100 mb-2">React Router Loaders</h4>
-              <pre className="text-xs bg-gray-900 text-green-400 p-2 rounded overflow-x-auto">
+              <p className="code">
 {`export async function loader() {
   const response = await fetch('/api/weather-events');
   return response.json();
 }`}
-              </pre>
+              </p>
             </div>
             
             <div className="p-3 bg-teal-50 dark:bg-teal-900/20 rounded">
               <h4 className="font-medium text-teal-900 dark:text-teal-100 mb-2">useEffect Pattern</h4>
-              <pre className="text-xs bg-gray-900 text-green-400 p-2 rounded overflow-x-auto">
+              <p className="code">
 {`useEffect(() => {
   fetch('/api/weather-events')
     .then(res => res.json())
     .then(setData);
 }, []);`}
-              </pre>
+              </p>
             </div>
             
             <div className="p-3 bg-orange-50 dark:bg-orange-900/20 rounded">
               <h4 className="font-medium text-orange-900 dark:text-orange-100 mb-2">Error Handling</h4>
-              <pre className="text-xs bg-gray-900 text-green-400 p-2 rounded overflow-x-auto">
+              <p className="code">
 {`try {
   const response = await fetch('/api/endpoint');
   if (!response.ok) throw new Error('Failed');
@@ -294,7 +294,7 @@ function Phase2Integration() {
 } catch (error) {
   setError(error.message);
 }`}
-              </pre>
+              </p>
             </div>
           </div>
         </div>

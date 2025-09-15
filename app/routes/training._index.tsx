@@ -1,4 +1,9 @@
+import { Button, Link } from 'atmosphere'
+import { useNavigate } from 'react-router'
+
 export default function TrainingIndex() {
+  const navigate = useNavigate();
+  
   return (
     <div className="max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">Client State Management Training</h1>
@@ -39,53 +44,56 @@ export default function TrainingIndex() {
         
         <div className="bg-green-100 dark:bg-green-800 p-6 rounded-lg">
           <h2 className="text-xl font-semibold mb-3">3.0 MapLibre GL JS (6 hours)</h2>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-2 text-sm pb-2">
             <li>🗺️ MapLibre fundamentals</li>
             <li>⚛️ React integration</li>
             <li>🏪 Zustand synchronization</li>
             <li>📍 Markers and popups</li>
             <li>🎯 Interactive exercises</li>
           </ul>
-          <a 
-            href="/training/maplibre-demo" 
-            className="inline-block mt-3 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded text-sm"
-          >
-            Start MapLibre Training →
-          </a>
-        </div>
+            <Button 
+            color="accent"
+            variant="filled"
+            onPress={() => navigate('/training/maplibre-demo')}
+            >
+            Start MSW Training →
+            </Button>
+         </div>
         
         <div className="bg-purple-100 dark:bg-purple-800 p-6 rounded-lg">
           <h2 className="text-xl font-semibold mb-3">4.0 Tailwind CSS v4 (6 hours)</h2>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-2 text-sm pb-2">
             <li>🎨 Utility-first approach</li>
             <li>📱 Responsive layouts</li>
             <li>🌍 Flexbox & Grid systems</li>
             <li>🎭 Component patterns</li>
             <li>✨ Interactive states</li>
           </ul>
-          <a 
-            href="/training/tailwind-demo" 
-            className="inline-block mt-3 bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded text-sm"
+          <Button 
+           color="accent"
+           variant="filled"
+           onPress={() => navigate('/training/tailwind-demo')}
           >
-            Start Tailwind Training →
-          </a>
+           Start MSW Training →
+          </Button>
         </div>
         
         <div className="bg-orange-100 dark:bg-orange-800 p-6 rounded-lg">
           <h2 className="text-xl font-semibold mb-3">5.0 MSW & API Mocking (6 hours)</h2>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-2 text-sm pb-2">
             <li>🔧 Service worker setup</li>
             <li>🔄 Request interception</li>
             <li>🎲 Dynamic mock data</li>
             <li>⚛️ React Router loaders</li>
             <li>📊 CRUD operations</li>
           </ul>
-          <a 
-            href="/training/msw-demo" 
-            className="inline-block mt-3 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded text-sm"
+          <Button 
+           color="accent"
+           variant="filled"
+           onPress={() => navigate('/training/msw-demo')}
           >
-            Start MSW Training →
-          </a>
+           Start MSW Training →
+          </Button>
         </div>
       </div>
       
