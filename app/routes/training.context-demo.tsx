@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTheme } from '~/contexts/ThemeContext';
 import { useAuth } from '~/contexts/AuthContext';
+import { Button } from 'atmosphere';
 
 export default function ContextDemo() {
   const { theme, toggleTheme } = useTheme();
@@ -21,12 +22,13 @@ export default function ContextDemo() {
       <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
         <h2 className="text-xl font-semibold mb-4">Theme Management</h2>
         <p className="mb-4">Current theme: <span className="font-mono">{theme}</span></p>
-        <button
-          onClick={toggleTheme}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+        <Button
+          onPress={toggleTheme}
+          color='accent'
+          variant='outlined'
         >
           Toggle Theme
-        </button>
+        </Button>
         <div className="mt-4 p-4 bg-white dark:bg-gray-700 rounded border">
           <p className="text-sm">
             This demonstrates Context for infrequently changing global state.
@@ -63,7 +65,7 @@ export default function ContextDemo() {
             </div>
             <button
               type="submit"
-              className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+              className=""
             >
               Login
             </button>
@@ -76,7 +78,7 @@ export default function ContextDemo() {
             </p>
             <button
               onClick={logout}
-              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
+              className=""
             >
               Logout
             </button>
