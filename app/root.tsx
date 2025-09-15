@@ -9,7 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import 'atmosphere/style.css'; // Import Atmosphere css at the top level of application
+import 'atmosphere/style.css';
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -30,6 +30,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Font Awesome Kit Script */}
+        <script src="https://kit.fontawesome.com/660a04e2d9.js" crossOrigin="anonymous"></script>
         <Meta />
         <Links />
       </head>

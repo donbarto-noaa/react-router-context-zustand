@@ -56,7 +56,7 @@ export default function TrainingIndex() {
             variant="filled"
             onPress={() => navigate('/training/maplibre-demo')}
             >
-            Start MSW Training →
+            Start MapLibre Training →
             </Button>
          </div>
         
@@ -74,7 +74,7 @@ export default function TrainingIndex() {
            variant="filled"
            onPress={() => navigate('/training/tailwind-demo')}
           >
-           Start MSW Training →
+           Start Tailwind Training →
           </Button>
         </div>
         

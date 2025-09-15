@@ -1,5 +1,8 @@
 import { useFetcher } from 'react-router';
 import { useState, useEffect } from 'react';
+// Font Awesome kit is loaded globally via <script> in root layout. Use <i className="fa-solid fa-cloud"></i> or official React package for icons.
+// Font Awesome kit is loaded globally; use <i> tags for icons
+import { Modal, IconButton } from 'atmosphere';
 
 export default function WeatherDashboard() {
   const [data, setData] = useState<any>(null);
@@ -277,43 +280,42 @@ export default function WeatherDashboard() {
         </div>
 
         {/* Event Detail Modal */}
-        {selectedEvent && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full p-6">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{selectedEvent.eventType}</h3>
-                <button
-                  onClick={() => setSelectedEvent(null)}
-                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-                >
-                  ✕
-                </button>
+  <Modal isOpen={!!selectedEvent} className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            {selectedEvent ? (
+              <div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full p-6">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{selectedEvent.eventType}</h3>
+                  <IconButton
+                    onPress={() => setSelectedEvent(null)}
+                    className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                  >
+                    <i className="fa-solid fa-times"></i>
+                  </IconButton>
+                </div>
+                <div className="space-y-3 text-sm">
+                  <div>
+                    <span className="font-medium">Location:</span> {selectedEvent.location}, {selectedEvent.county}, {selectedEvent.state}
+                  </div>
+                  <div>
+                    <span className="font-medium">Magnitude:</span> {selectedEvent.eventMagnitude}
+                  </div>
+                  <div>
+                    <span className="font-medium">Status:</span> {selectedEvent.status}
+                  </div>
+                  <div>
+                    <span className="font-medium">Date:</span> {new Date(selectedEvent.date).toLocaleString()}
+                  </div>
+                  <div>
+                    <span className="font-medium">Coordinates:</span> {selectedEvent.coordinates.lat.toFixed(4)}, {selectedEvent.coordinates.lng.toFixed(4)}
+                  </div>
+                  <div>
+                    <span className="font-medium">Description:</span>
+                    <p className="mt-1 text-gray-600 dark:text-gray-400">{selectedEvent.description}</p>
+                  </div>
+                </div>
               </div>
-              
-              <div className="space-y-3 text-sm">
-                <div>
-                  <span className="font-medium">Location:</span> {selectedEvent.location}, {selectedEvent.county}, {selectedEvent.state}
-                </div>
-                <div>
-                  <span className="font-medium">Magnitude:</span> {selectedEvent.eventMagnitude}
-                </div>
-                <div>
-                  <span className="font-medium">Status:</span> {selectedEvent.status}
-                </div>
-                <div>
-                  <span className="font-medium">Date:</span> {new Date(selectedEvent.date).toLocaleString()}
-                </div>
-                <div>
-                  <span className="font-medium">Coordinates:</span> {selectedEvent.coordinates.lat.toFixed(4)}, {selectedEvent.coordinates.lng.toFixed(4)}
-                </div>
-                <div>
-                  <span className="font-medium">Description:</span>
-                  <p className="mt-1 text-gray-600 dark:text-gray-400">{selectedEvent.description}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+            ) : null}
+        </Modal>
       </div>
     </div>
   );
