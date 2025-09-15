@@ -14,7 +14,7 @@
     "@react-router/node": "^7.7.1",
     "@react-router/serve": "^7.7.1",
     "@types/maplibre-gl": "^1.13.2",
-    "atmosphere": "file:../../atmosphere-dev/atmosphere",
+    "atmosphere": "file:../../atmosphere-dev/atmosphere/atmosphere-0.9.1-dev.tgz",
     "faker": "^6.6.6",
     "isbot": "^5.1.27",
     "maplibre-gl": "^5.7.0",
@@ -28,7 +28,7 @@
     "@react-router/dev": "^7.7.1",
     "@tailwindcss/vite": "^4.1.4",
     "@types/atmosphere": "^2.1.34",
-    "@types/node": "^20",
+    "@types/node": "^20.19.13",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "tailwindcss": "^4.1.4",
@@ -40,5 +40,8 @@
     "workerDirectory": [
       "public"
     ]
+  },
+  "overrides": {
+    "@awesome.me/kit-660a04e2d9": "npm:@fortawesome/fontawesome-free@^6.0.0"
   }
 }

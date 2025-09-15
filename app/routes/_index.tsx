@@ -1,4 +1,7 @@
-import { Link } from 'react-router';
+import { Link, FullPageCalendar, Card, CardHeader, CardBody, CardFooter } from 'atmosphere';
+
+// Get URL root from browser path
+const urlRoot = window.location.origin;
 
 export default function Index() {
   return (
@@ -13,48 +16,68 @@ export default function Index() {
           </p>
         </div>
         
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-semibold mb-4 text-blue-600 dark:text-blue-400">
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 pt-8">
+          <Card >
+            <CardHeader>
               🧠 State Management Training
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
+            </CardHeader>
+            <CardBody>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
               Complete 6-hour training covering Context API and Zustand with hands-on examples.
             </p>
+            </CardBody>
+            <CardFooter>
+              
             <Link
-              to="/training"
-              className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors"
+              url={`${urlRoot}/training`}
+              isExternal={false}
+              target='_self'
             >
               Start Training →
             </Link>
-       
-          </div>
+            </CardFooter>
+          </Card>
           
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-semibold mb-4 text-green-600 dark:text-green-400">
+          <Card>
+            <CardHeader>
               📚 Training Resources
-            </h2>
-            <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-              <li>• Interactive examples and demos</li>
-              <li>• Performance optimization techniques</li>
-              <li>• Best practices and patterns</li>
-              <li>• Hands-on exercises</li>
-            </ul>
-          </div>
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-semibold mb-4 text-blue-600 dark:text-blue-400">
+            </CardHeader>
+           <CardBody>
+             <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+                <li>• Interactive examples and demos</li>
+                <li>• Performance optimization techniques</li>
+                <li>• Best practices and patterns</li>
+                <li>• Hands-on exercises</li>
+              </ul>
+           </CardBody>
+          </Card>
+          <Card>
+            <CardHeader>
               🧠 Events Pages Mock Ups and Sandbox
-            </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
+            </CardHeader>
+            <CardBody>
               A place to try development stategies for this stack
-            </p>
-            <Link
-              to="/events"
-              className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors"
-            >Events Pages
-            </Link>
-          </div>
+            </CardBody>
+            <CardFooter>
+              <Link
+                url={`${urlRoot}/events`}
+                isExternal={false}
+                target='_self'
+              >
+                Events Pages →
+              </Link>
+            </CardFooter>
+          </Card>
         </div>
+        
+        <div className="pt-8 mt-8">
+          <FullPageCalendar 
+            events={[]}
+            height="600px"
+            initialView="dayGridMonth"
+          />
+        </div>
+
         
         <div className="mt-12 text-center">
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 max-w-2xl mx-auto">
