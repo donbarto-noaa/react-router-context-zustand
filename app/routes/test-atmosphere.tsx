@@ -1,5 +1,5 @@
 import { Button, Badge, Card, CardHeader, CardBody, CardFooter, SearchField } from '@nwsconnect/atmosphere';
-import 'atmosphere/style.css';
+import '@nwsconnect/atmosphere/style.css';
 
 
 export default function TestAtmosphere() {
