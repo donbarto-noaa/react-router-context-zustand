@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTheme } from '~/contexts/ThemeContext';
 import { useAuth } from '~/contexts/AuthContext';
-import { Button } from 'atmosphere';
+import { Button } from '@nwsconnect/atmosphere';
 
 export default function ContextDemo() {
   const { theme, toggleTheme } = useTheme();

@@ -1,4 +1,4 @@
-import { Button, Link } from 'atmosphere'
+import { Button, Link } from '@nwsconnect/atmosphere'
 import { useNavigate } from 'react-router'
 
 export default function TrainingIndex() {

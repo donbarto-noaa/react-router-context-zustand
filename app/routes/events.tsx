@@ -1,5 +1,5 @@
 import { Link, Outlet } from 'react-router';
-import { Button } from 'atmosphere';
+import { Button } from '@nwsconnect/atmosphere';
 import 'atmosphere/style.css';
 import { ThemeProvider } from '~/contexts/ThemeContext';
 import { AuthProvider } from '~/contexts/AuthContext';

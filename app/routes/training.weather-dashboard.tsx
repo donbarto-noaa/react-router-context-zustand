@@ -1,7 +1,7 @@
 import { useFetcher } from 'react-router';
 import { useState, useEffect } from 'react';
-import { Modal, IconButton } from 'atmosphere';
-import type { IconButtonProps } from 'atmosphere';
+import { Modal, IconButton } from '@nwsconnect/atmosphere';
+import type { IconButtonProps } from '@nwsconnect/atmosphere';
 
 export default function WeatherDashboard() {
   const [data, setData] = useState<any>(null);

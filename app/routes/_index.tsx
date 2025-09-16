@@ -1,4 +1,4 @@
-import { Link, FullPageCalendar, Card, CardHeader, CardBody, CardFooter } from 'atmosphere';
+import { Link, FullPageCalendar, Card, CardHeader, CardBody, CardFooter } from '@nwsconnect/atmosphere';
 
 // Get URL root from browser path
 const urlRoot = window.location.origin;

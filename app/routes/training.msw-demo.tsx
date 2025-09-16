@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { Button } from 'atmosphere';
+import { Button } from '@nwsconnect/atmosphere';
 
 export default function MSWDemo() {
   

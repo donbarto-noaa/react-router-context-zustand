@@ -1,4 +1,4 @@
-import { Button, Badge, Card, CardHeader, CardBody, CardFooter, SearchField } from 'atmosphere';
+import { Button, Badge, Card, CardHeader, CardBody, CardFooter, SearchField } from '@nwsconnect/atmosphere';
 import 'atmosphere/style.css';
 
 

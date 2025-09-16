@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router';
 import { ThemeProvider } from '~/contexts/ThemeContext';
 import { AuthProvider } from '~/contexts/AuthContext';
-import { Link } from 'atmosphere';
+import { Link } from '@nwsconnect/atmosphere';
 
 const urlRoot = window.location.origin;
 
