@@ -24,7 +24,7 @@ export default function MapLibreDemo() {
     { id: '2', name: 'OpenStreetMap', url: 'https://tiles.stadiamaps.com/styles/osm_bright.json' }
   ];
 
-  const [selectedStyleKey, setSelectedStyleKey] = useState('react-aria-1');
+  const [selectedStyleKey, setSelectedStyleKey] = useState('1');
 
 
 
@@ -60,18 +60,9 @@ export default function MapLibreDemo() {
               items={styles}
               label="Map Style"
               selectedKey={selectedStyleKey}
-              onSelectionChange={(keys) => {
-                // Handle both Set (from CheckedListBox) and string (from AriaSelect)
-                let selectedId;
-                if (keys instanceof Set) {
-                  selectedId = Array.from(keys)[0];
-                } else {
-                  selectedId = typeof keys === 'string' ? keys.replace('react-aria-', '') : keys;
-                }
-                
+              onSelectionChange={(selectedId) => {
                 if (selectedId) {
-                  const fullKey = `react-aria-${selectedId}`;
-                  setSelectedStyleKey(fullKey);
+                  setSelectedStyleKey(selectedId);
                   const selectedStyle = styles.find(style => style.id === selectedId);
                   if (selectedStyle) {
                     setMapConfig(prev => ({ ...prev, style: selectedStyle.url }));
@@ -85,21 +76,20 @@ export default function MapLibreDemo() {
           
           <div>
             <div className="border border-red-500 p-4 min-h-[100px] bg-white">
-              <div className="mb-2 text-sm text-gray-600">Slider should appear below:</div>
               
               <Slider
                 label="Zoom Level"
                 minValue={1}
                 maxValue={18}
                 value={mapConfig.zoom}
-                compact={false}
-                fill="amount"
                 onChange={(value) => {
                   setMapConfig(prev => ({ ...prev, zoom: Array.isArray(value) ? value[0] : value }));
                 }}
                 defaultValue={10}
                 step={1}
-                compact={true}
+                size="medium"
+                fill="amount"
+                compact={false}
               />
               
               <div className="mt-2 text-xs text-gray-500">Debug: Slider component rendered</div>
