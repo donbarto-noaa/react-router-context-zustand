@@ -39,7 +39,7 @@ export default function TrainingLayout() {
                   target='_self' 
                   >Combined Demo</Link>
                 <Link  
-                  url={`${urlRoot}/training//maplibre-demo`} 
+                  url={`${urlRoot}/training/maplibre-demo`} 
                   isExternal={false}
                   target='_self'>Maplibre Demo</Link>
                 <Link 

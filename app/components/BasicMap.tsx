@@ -17,9 +17,10 @@ export default function BasicMap({
   const map = useRef<maplibregl.Map | null>(null);
 
   useEffect(() => {
-    if (!mapContainer.current) return;
+    if (!mapContainer.current || map.current) return;
 
-    // Initialize map
+    console.log('Initializing map');
+
     map.current = new maplibregl.Map({
       container: mapContainer.current,
       style,
@@ -27,33 +28,39 @@ export default function BasicMap({
       zoom
     });
 
-    // Add navigation controls
     map.current.addControl(new maplibregl.NavigationControl(), 'top-right');
 
-    // Map event handlers
     map.current.on('load', () => {
       console.log('Map loaded successfully');
     });
 
-    map.current.on('click', (e) => {
-      console.log('Map clicked at:', e.lngLat);
-    });
-
-    map.current.on('move', () => {
-      const center = map.current?.getCenter();
-      const zoom = map.current?.getZoom();
-      console.log('Map moved - Center:', center, 'Zoom:', zoom);
-    });
-
-    // Cleanup
     return () => {
-      map.current?.remove();
+      if (map.current) {
+        map.current.remove();
+        map.current = null;
+      }
     };
-  }, [center, zoom, style]);
+  }, []); // Only run once
+
+  // Update map properties when they change
+  useEffect(() => {
+    if (!map.current) return;
+    map.current.setCenter(center);
+    map.current.setZoom(zoom);
+  }, [center, zoom]);
+
+  useEffect(() => {
+    if (!map.current) return;
+    map.current.setStyle(style);
+  }, [style]);
 
   return (
-    <div className="w-full h-96 rounded-lg overflow-hidden">
-      <div ref={mapContainer} className="w-full h-full" />
+    <div className="w-full h-96 rounded-lg overflow-hidden border-2 border-red-500">
+      <div 
+        ref={mapContainer} 
+        className="w-full h-full bg-gray-200" 
+        style={{ minHeight: '384px' }}
+      />
     </div>
   );
 }

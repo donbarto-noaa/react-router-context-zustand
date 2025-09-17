@@ -206,29 +206,28 @@ function Phase2Integration() {
           
           <div className="space-y-4">
             <div className="flex gap-2">
-              <button
-                onClick={() => fetchEvents(3)}
-                disabled={loading}
-                className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-4 py-2 rounded text-sm"
+              <Button
+                onPress={() => fetchEvents(3)}
+                isDisabled={loading}
               >
                 {loading ? 'Loading...' : 'Fetch 3 Events'}
-              </button>
+              </Button>
               
-              <button
-                onClick={() => fetchEvents(10)}
-                disabled={loading}
+              <Button
+                onPress={() => fetchEvents(10)}
+                isDisabled={loading}
                 className="bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white px-4 py-2 rounded text-sm"
               >
                 Fetch 10 Events
-              </button>
+              </Button>
               
-              <button
-                onClick={createEvent}
-                disabled={loading}
+              <Button
+                onPress={createEvent}
+                isDisabled={loading}
                 className="bg-purple-600 hover:bg-purple-700 disabled:bg-gray-400 text-white px-4 py-2 rounded text-sm"
               >
                 Create Event
-              </button>
+              </Button>
             </div>
             
             {error && (

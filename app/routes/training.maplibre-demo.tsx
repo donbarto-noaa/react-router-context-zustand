@@ -3,6 +3,7 @@ import BasicMap from '~/components/BasicMap';
 import ReactMap from '~/components/ReactMap';
 import ZustandMap from '~/components/ZustandMap';
 import { useMapStore } from '~/stores/mapStore';
+import { Button, Select, Slider, SelectionLabel } from '@nwsconnect/atmosphere'
 
 export default function MapLibreDemo() {
   const [mapConfig, setMapConfig] = useState({
@@ -19,9 +20,13 @@ export default function MapLibreDemo() {
   ];
 
   const styles = [
-    { name: 'Default', url: 'https://demotiles.maplibre.org/style.json' },
-    { name: 'OpenStreetMap', url: 'https://tiles.stadiamaps.com/styles/osm_bright.json' }
+    { id: '1', name: 'Default', url: 'https://demotiles.maplibre.org/style.json' },
+    { id: '2', name: 'OpenStreetMap', url: 'https://tiles.stadiamaps.com/styles/osm_bright.json' }
   ];
+
+  const [selectedStyleKey, setSelectedStyleKey] = useState('react-aria-1');
+
+
 
   return (
     <div className="max-w-6xl mx-auto space-y-6">
@@ -33,48 +38,73 @@ export default function MapLibreDemo() {
         
         <div className="grid md:grid-cols-3 gap-4 mb-4">
           <div>
-            <label className="block text-sm font-medium mb-2">Location Presets</label>
+            <SelectionLabel>Location Presets</SelectionLabel>
             <div className="space-y-1">
               {presets.map(preset => (
-                <button
+                <Button
                   key={preset.name}
-                  onClick={() => setMapConfig(prev => ({ 
+                  onPress={() => setMapConfig(prev => ({ 
                     ...prev, 
                     center: preset.center, 
                     zoom: preset.zoom 
                   }))}
-                  className="block w-full text-left px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded text-sm"
                 >
                   {preset.name}
-                </button>
+                </Button>
               ))}
             </div>
           </div>
           
-          <div>
-            <label className="block text-sm font-medium mb-2">Map Style</label>
-            <select
-              value={mapConfig.style}
-              onChange={(e) => setMapConfig(prev => ({ ...prev, style: e.target.value }))}
-              className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600"
+          <div className="max-w-sm">
+            <Select
+              items={styles}
+              label="Map Style"
+              selectedKey={selectedStyleKey}
+              onSelectionChange={(keys) => {
+                // Handle both Set (from CheckedListBox) and string (from AriaSelect)
+                let selectedId;
+                if (keys instanceof Set) {
+                  selectedId = Array.from(keys)[0];
+                } else {
+                  selectedId = typeof keys === 'string' ? keys.replace('react-aria-', '') : keys;
+                }
+                
+                if (selectedId) {
+                  const fullKey = `react-aria-${selectedId}`;
+                  setSelectedStyleKey(fullKey);
+                  const selectedStyle = styles.find(style => style.id === selectedId);
+                  if (selectedStyle) {
+                    setMapConfig(prev => ({ ...prev, style: selectedStyle.url }));
+                  }
+                }
+              }}
             >
-              {styles.map(style => (
-                <option key={style.name} value={style.url}>{style.name}</option>
-              ))}
-            </select>
+              {(item) => item.name}
+            </Select>
           </div>
           
           <div>
-            <label className="block text-sm font-medium mb-2">Zoom Level</label>
-            <input
-              type="range"
-              min="1"
-              max="18"
-              value={mapConfig.zoom}
-              onChange={(e) => setMapConfig(prev => ({ ...prev, zoom: parseInt(e.target.value) }))}
-              className="w-full"
-            />
-            <span className="text-sm">{mapConfig.zoom}</span>
+            <div className="border border-red-500 p-4 min-h-[100px] bg-white">
+              <div className="mb-2 text-sm text-gray-600">Slider should appear below:</div>
+              
+              <Slider
+                label="Zoom Level"
+                minValue={1}
+                maxValue={18}
+                value={mapConfig.zoom}
+                compact={false}
+                fill="amount"
+                onChange={(value) => {
+                  setMapConfig(prev => ({ ...prev, zoom: Array.isArray(value) ? value[0] : value }));
+                }}
+                defaultValue={10}
+                step={1}
+                compact={true}
+              />
+              
+              <div className="mt-2 text-xs text-gray-500">Debug: Slider component rendered</div>
+            </div>
+            <span className="text-sm mt-2 block">Current zoom: {mapConfig.zoom}</span>
           </div>
         </div>
         
@@ -197,23 +227,21 @@ function ZustandIntegrationExample() {
         <div className="p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded">
           <h4 className="font-medium mb-2">Actions:</h4>
           <div className="space-y-2">
-            <button
-              onClick={() => addMarker({
+            <Button
+              onPress={() => addMarker({
                 lat: coordinates.lat + (Math.random() - 0.5) * 0.01,
                 lng: coordinates.lng + (Math.random() - 0.5) * 0.01,
                 title: `Random Marker ${markers.length + 1}`
               })}
-              className="block w-full bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm"
             >
               Add Random Marker
-            </button>
+            </Button>
             {markers.length > 0 && (
-              <button
-                onClick={() => removeMarker(markers[markers.length - 1].id)}
-                className="block w-full bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm"
+              <Button
+                onPress={() => removeMarker(markers[markers.length - 1].id)}
               >
                 Remove Last Marker
-              </button>
+              </Button>
             )}
           </div>
         </div>
