@@ -3,7 +3,8 @@ import BasicMap from '~/components/BasicMap';
 import ReactMap from '~/components/ReactMap';
 import ZustandMap from '~/components/ZustandMap';
 import { useMapStore } from '~/stores/mapStore';
-import { Button, Select, Slider, SelectionLabel } from '@nwsconnect/atmosphere'
+import { Button, Select, Slider, SelectionLabel } from '@nwsconnect/atmosphere';
+import { useToast } from '@nwsconnect/atmosphere';
 
 export default function MapLibreDemo() {
   const [mapConfig, setMapConfig] = useState({
@@ -75,7 +76,7 @@ export default function MapLibreDemo() {
           </div>
           
           <div>
-            <div className="border border-red-500 p-4 min-h-[100px] bg-white">
+            <div className="">
               
               <Slider
                 label="Zoom Level"
@@ -87,9 +88,9 @@ export default function MapLibreDemo() {
                 }}
                 defaultValue={10}
                 step={1}
-                size="medium"
+                size="small"
                 fill="amount"
-                compact={false}
+                compact={true}
               />
               
               <div className="mt-2 text-xs text-gray-500">Debug: Slider component rendered</div>
@@ -125,6 +126,7 @@ export default function MapLibreDemo() {
 }
 
 function ReactIntegrationExample() {
+  const { addToast } = useToast();
   const [reactMarkers, setReactMarkers] = useState([
     { id: '1', lng: -74.0060, lat: 40.7128, title: 'New York', color: '#ff6b6b' },
     { id: '2', lng: -73.9857, lat: 40.7484, title: 'Times Square', color: '#4ecdc4' }
@@ -144,7 +146,11 @@ function ReactIntegrationExample() {
   };
 
   const handleMarkerClick = (marker: any) => {
-    alert(`Clicked on: ${marker.title}`);
+    addToast({
+      variant: 'info',
+      title: 'Marker Clicked',
+      message: `Clicked on: ${marker.title}`
+    });
   };
 
   return (
@@ -152,6 +158,17 @@ function ReactIntegrationExample() {
       <h2 className="text-xl font-semibold mb-4">Phase 2: React Integration (2 hours)</h2>
       
       <div className="mb-4">
+        <div className="mb-2">
+          <Button
+            onPress={() => addToast({
+              variant: 'info',
+              title: 'Test Toast',
+              message: 'Toast is working in MapLibre demo!'
+            })}
+          >
+            Test Toast
+          </Button>
+        </div>
         <ReactMap 
           center={[-74.0060, 40.7128]}
           zoom={12}

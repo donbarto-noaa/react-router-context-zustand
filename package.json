@@ -14,7 +14,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@mswjs/data": "^0.16.2",
-    "@nwsconnect/atmosphere": "^0.9.12",
+    "@nwsconnect/atmosphere": "file:../../atmosphere-dev/atmosphere",
     "@react-router/node": "^7.7.1",
     "@react-router/serve": "^7.7.1",
     "@types/maplibre-gl": "^1.13.2",

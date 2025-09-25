@@ -60,7 +60,7 @@ export default function TrainingIndex() {
             </Button>
          </div>
         
-        <div className="bg-purple-100 dark:bg-purple-800 p-6 rounded-lg">
+        <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
           <h2 className="text-xl font-semibold mb-3">4.0 Tailwind CSS v4 (6 hours)</h2>
           <ul className="space-y-2 text-sm pb-2">
             <li>🎨 Utility-first approach</li>
@@ -78,7 +78,7 @@ export default function TrainingIndex() {
           </Button>
         </div>
         
-        <div className="bg-orange-100 dark:bg-orange-800 p-6 rounded-lg">
+        <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
           <h2 className="text-xl font-semibold mb-3">5.0 MSW & API Mocking (6 hours)</h2>
           <ul className="space-y-2 text-sm pb-2">
             <li>🔧 Service worker setup</li>

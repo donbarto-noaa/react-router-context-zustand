@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import { ToastProvider } from '@nwsconnect/atmosphere';
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -45,7 +46,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <ToastProvider>
+      <Outlet />
+    </ToastProvider>
+  );
 }
 
 export function HydrateFallback() {

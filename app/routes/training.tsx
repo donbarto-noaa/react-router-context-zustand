@@ -9,8 +9,8 @@ export default function TrainingLayout() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white">
-          <nav className="bg-blue-600 dark:bg-blue-800 text-white p-4">
+        <div className="min-h-screen bg-white dark:bg-gray-900">
+          <nav>
             <div className="container mx-auto">
               <h1 className="text-2xl font-bold mb-4">State Management Training</h1>
               <div className="flex gap-4">

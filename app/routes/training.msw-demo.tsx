@@ -67,22 +67,22 @@ function Phase1Fundamentals() {
           <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Key Concepts</h3>
           <div className="space-y-4">
             <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
-              <h4 className="font-medium text-blue-900 dark:text-blue-100 mb-2">Service Worker Level</h4>
-              <p className="text-sm text-blue-800 dark:text-blue-200">
+              <h4 className="font-medium mb-2">Service Worker Level</h4>
+              <p className="text-sm">
                 MSW intercepts requests at the network level, not in your application code
               </p>
             </div>
             
             <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded">
-              <h4 className="font-medium text-green-900 dark:text-green-100 mb-2">Request Handlers</h4>
-              <p className="text-sm text-green-800 dark:text-green-200">
+              <h4 className="font-medium mb-2">Request Handlers</h4>
+              <p className="text-sm ">
                 Define handlers for different HTTP methods (GET, POST, PUT, DELETE)
               </p>
             </div>
             
             <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded">
-              <h4 className="font-medium text-purple-900 dark:text-purple-100 mb-2">Dynamic Responses</h4>
-              <p className="text-sm text-purple-800 dark:text-purple-200">
+              <h4 className="font-medium mb-2">Dynamic Responses</h4>
+              <p className="text-sm">
                 Generate realistic mock data based on request parameters
               </p>
             </div>
@@ -266,7 +266,7 @@ function Phase2Integration() {
           
           <div className="space-y-4">
             <div className="p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded">
-              <h4 className="font-medium text-indigo-900 dark:text-indigo-100 mb-2">React Router Loaders</h4>
+              <h4 className="font-medium mb-2">React Router Loaders</h4>
               <p className="code">
                 {`export async function loader() {
                   const response = await fetch('/api/weather-events');
@@ -276,7 +276,7 @@ function Phase2Integration() {
             </div>
             
             <div className="p-3 bg-teal-50 dark:bg-teal-900/20 rounded">
-              <h4 className="font-medium text-teal-900 dark:text-teal-100 mb-2">useEffect Pattern</h4>
+              <h4 className="font-medium mb-2">useEffect Pattern</h4>
               <p className="code">
                 {`useEffect(() => {
                   fetch('/api/weather-events')
@@ -287,7 +287,7 @@ function Phase2Integration() {
             </div>
             
             <div className="p-3 bg-orange-50 dark:bg-orange-900/20 rounded">
-              <h4 className="font-medium text-orange-900 dark:text-orange-100 mb-2">Error Handling</h4>
+              <h4 className="font-medium mb-2">Error Handling</h4>
               <p className="code">
                 {`try {
                   const response = await fetch('/api/endpoint');
@@ -317,8 +317,8 @@ function Phase3Practice() {
           
           <div className="space-y-4">
             <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded border-l-4 border-yellow-400">
-              <h4 className="font-medium text-yellow-800 dark:text-yellow-200 mb-2">Your Task:</h4>
-              <ul className="text-sm text-yellow-700 dark:text-yellow-300 space-y-1">
+              <h4 className="">Your Task:</h4>
+              <ul className="text-smspace-y-1">
                 <li>• Create a new route with loader function</li>
                 <li>• Fetch data from mock API endpoints</li>
                 <li>• Display weather events and stations</li>
@@ -329,7 +329,7 @@ function Phase3Practice() {
             
             <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded border-l-4 border-green-400">
               <h4 className="font-medium text-green-800 dark:text-green-200 mb-2">Available Endpoints:</h4>
-              <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
+              <ul className="text-sm space-y-1">
                 <li>• GET /api/weather-events</li>
                 <li>• GET /api/weather-stations</li>
                 <li>• GET /api/weather-forecast/:location</li>
@@ -355,9 +355,9 @@ function Phase3Practice() {
           <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Learning Objectives</h3>
           
           <div className="space-y-4">
-            <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
-              <h4 className="font-medium text-blue-900 dark:text-blue-100 mb-2">MSW Setup</h4>
-              <ul className="text-sm text-blue-800 dark:text-blue-200 space-y-1">
+            <div className="p-3 rounded">
+              <h4 className="font-medium mb-2">MSW Setup</h4>
+              <ul className="text-sm space-y-1">
                 <li>• Configure service worker</li>
                 <li>• Define request handlers</li>
                 <li>• Generate dynamic mock data</li>
@@ -365,8 +365,8 @@ function Phase3Practice() {
             </div>
             
             <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded">
-              <h4 className="font-medium text-purple-900 dark:text-purple-100 mb-2">React Integration</h4>
-              <ul className="text-sm text-purple-800 dark:text-purple-200 space-y-1">
+              <h4 className="font-medium mb-2">React Integration</h4>
+              <ul className="text-sm space-y-1">
                 <li>• Use with React Router loaders</li>
                 <li>• Handle async operations</li>
                 <li>• Manage loading states</li>
@@ -374,8 +374,8 @@ function Phase3Practice() {
             </div>
             
             <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded">
-              <h4 className="font-medium text-green-900 dark:text-green-100 mb-2">Best Practices</h4>
-              <ul className="text-sm text-green-800 dark:text-green-200 space-y-1">
+              <h4 className="font-medium mb-2">Best Practices</h4>
+              <ul className="text-sm space-y-1">
                 <li>• Realistic mock data</li>
                 <li>• Error simulation</li>
                 <li>• Network delay testing</li>
