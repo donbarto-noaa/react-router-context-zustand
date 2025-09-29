@@ -63,7 +63,7 @@ export default function MapLibreDemo() {
               selectedKey={selectedStyleKey}
               onSelectionChange={(selectedId) => {
                 if (selectedId) {
-                  setSelectedStyleKey(selectedId);
+                  setSelectedStyleKey(selectedId as string);
                   const selectedStyle = styles.find(style => style.id === selectedId);
                   if (selectedStyle) {
                     setMapConfig(prev => ({ ...prev, style: selectedStyle.url }));
@@ -92,10 +92,7 @@ export default function MapLibreDemo() {
                 fill="amount"
                 compact={true}
               />
-              
-              <div className="mt-2 text-xs text-gray-500">Debug: Slider component rendered</div>
             </div>
-            <span className="text-sm mt-2 block">Current zoom: {mapConfig.zoom}</span>
           </div>
         </div>
         
