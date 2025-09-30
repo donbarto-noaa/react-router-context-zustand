@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTheme } from '~/contexts/ThemeContext';
 import { useAuth } from '~/contexts/AuthContext';
-import { Button } from '@nwsconnect/atmosphere';
+import { ToggleButton, Button, TextField, } from '@nwsconnect/atmosphere';
 
 export default function ContextDemo() {
   const { theme, toggleTheme } = useTheme();
@@ -22,13 +22,12 @@ export default function ContextDemo() {
       <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
         <h2 className="text-xl font-semibold mb-4">Theme Management</h2>
         <p className="mb-4">Current theme: <span className="font-mono">{theme}</span></p>
-        <Button
-          onPress={toggleTheme}
-          color='accent'
-          variant='outlined'
+        <ToggleButton
+          onChange={toggleTheme}
+          isEmphasized
         >
           Toggle Theme
-        </Button>
+        </ToggleButton>
         <div className="mt-4 p-4 bg-white dark:bg-gray-700 rounded border">
           <p className="text-sm">
             This demonstrates Context for infrequently changing global state.
@@ -44,31 +43,33 @@ export default function ContextDemo() {
         {!isAuthenticated ? (
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Email</label>
-              <input
-                type="email"
+              <TextField
+                name='email' 
+                label='E-Mail Address'
+                placeholder='Enter email'
+                type='email'
+                inputMode='email'
                 value={email}
+                size='lg'
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600"
-                placeholder="Enter email"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Password</label>
-              <input
-                type="password"
+              <TextField
+                name='password' 
+                label='Password'
+                placeholder='Enter password'
+                type='password'
                 value={password}
+                size='lg'
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600"
-                placeholder="Enter password"
               />
             </div>
-            <button
-              type="submit"
-              className=""
+            <Button
+              type='submit'
             >
               Login
-            </button>
+            </Button>
           </form>
         ) : (
           <div>
@@ -76,12 +77,13 @@ export default function ContextDemo() {
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
               Email: {user?.email}
             </p>
-            <button
-              onClick={logout}
+            <Button
+              type='button'
+              onPress={logout}
               className=""
             >
               Logout
-            </button>
+            </Button>
           </div>
         )}
         

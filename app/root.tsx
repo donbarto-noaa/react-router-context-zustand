@@ -7,6 +7,7 @@ import {
   ScrollRestoration,
 } from "react-router";
 import { ToastProvider } from '@nwsconnect/atmosphere';
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -47,9 +48,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <ToastProvider>
-      <Outlet />
-    </ToastProvider>
+    <ThemeProvider>
+      <ToastProvider>
+        <Outlet />
+      </ToastProvider>
+    </ThemeProvider>
   );
 }
 

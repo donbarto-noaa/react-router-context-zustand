@@ -14,10 +14,10 @@ export default function MapLibreDemo() {
   });
 
   const presets = [
-    { name: 'New York', center: [-74.0060, 40.7128] as [number, number], zoom: 12 },
-    { name: 'San Francisco', center: [-122.4194, 37.7749] as [number, number], zoom: 12 },
-    { name: 'London', center: [-0.1276, 51.5074] as [number, number], zoom: 12 },
-    { name: 'Tokyo', center: [139.6917, 35.6895] as [number, number], zoom: 12 }
+    { name: 'New York', center: [-74.0060, 40.7128] as [number, number], zoom: 10 },
+    { name: 'San Francisco', center: [-122.4194, 37.7749] as [number, number], zoom: 10 },
+    { name: 'London', center: [-0.1276, 51.5074] as [number, number], zoom: 10 },
+    { name: 'Tokyo', center: [139.6917, 35.6895] as [number, number], zoom: 10 }
   ];
 
   const styles = [
@@ -47,7 +47,7 @@ export default function MapLibreDemo() {
                   onPress={() => setMapConfig(prev => ({ 
                     ...prev, 
                     center: preset.center, 
-                    zoom: preset.zoom 
+                    zoom: preset.zoom,
                   }))}
                 >
                   {preset.name}
@@ -76,7 +76,7 @@ export default function MapLibreDemo() {
           </div>
           
           <div>
-            <div className="">
+            <div>
               
               <Slider
                 label="Zoom Level"
@@ -91,6 +91,7 @@ export default function MapLibreDemo() {
                 size="small"
                 fill="amount"
                 compact={true}
+                isEmphasized={true}
               />
             </div>
           </div>
