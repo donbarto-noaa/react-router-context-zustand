@@ -3,8 +3,8 @@ import BasicMap from '~/components/BasicMap';
 import ReactMap from '~/components/ReactMap';
 import ZustandMap from '~/components/ZustandMap';
 import { useMapStore } from '~/stores/mapStore';
-import { Button, Select, Slider, SelectionLabel } from '@nwsconnect/atmosphere';
-import { useToast } from '@nwsconnect/atmosphere';
+import { Button, Select, Slider, SelectionLabel, useToast } from '@nwsconnect/atmosphere';
+
 
 export default function MapLibreDemo() {
   const [mapConfig, setMapConfig] = useState({

@@ -14,6 +14,7 @@ export default [
       route("events-enhanced", "routes/training.events-enhanced.tsx"),
       route("msw-demo", "routes/training.msw-demo.tsx"),
       route("weather-dashboard", "routes/training.weather-dashboard.tsx"),
+      route("user-info", "routes/training.user-info.tsx"),
     ]),    
     route("events", "routes/events.tsx", [
             index("routes/events._index.tsx"),

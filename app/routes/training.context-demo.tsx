@@ -1,18 +1,44 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import { useTheme } from '~/contexts/ThemeContext';
 import { useAuth } from '~/contexts/AuthContext';
-import { ToggleButton, Button, TextField, } from '@nwsconnect/atmosphere';
+import { ToggleButton, Button, TextField, useToast, Link } from '@nwsconnect/atmosphere';
+
+const urlRoot = window.location.origin;
 
 export default function ContextDemo() {
   const { theme, toggleTheme } = useTheme();
   const { user, isAuthenticated, login, logout } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { addToast } = useToast();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     await login(email, password);
   };
+
+  const navigate = useNavigate();
+
+
+  // const showUserInfo = () => {
+  //   console.log(user);
+  //   if (isAuthenticated) {
+  //     return (
+  //       <div className="mt-4">
+  //         <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+  //           Email: {user?.email}
+  //         </p>
+  //         <Button onPress={() => addToast({
+  //                 variant: 'info',
+  //                 title: 'Test Toast',
+  //                 message: `welcom ${user?.name}`
+  //               })} >Test</Button>
+          
+  //       </div>
+  //     );
+  //   }
+  // };
 
   return (
     <div className="max-w-2xl mx-auto space-y-8">
@@ -77,13 +103,21 @@ export default function ContextDemo() {
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
               Email: {user?.email}
             </p>
-            <Button
-              type='button'
-              onPress={logout}
-              className=""
-            >
-              Logout
-            </Button>
+            <div className="flex flex-row p-4 justify-between">
+              <Button
+                type='button'
+                onPress={logout}
+                className=""
+              >
+                Logout
+              </Button>
+              <Button onPress={() => navigate('/training/user-info')}>View info</Button>
+              <Button onPress={() => addToast({
+                  variant: 'info',
+                  title: 'Test Toast',
+                  message: `welcom ${user?.name}`
+                })} >Test</Button>
+          </div>
           </div>
         )}
         

@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router';
 import { ThemeProvider } from '~/contexts/ThemeContext';
 import { AuthProvider } from '~/contexts/AuthContext';
-import { Link } from '@nwsconnect/atmosphere';
+import { Link, Tab, TabList, TabPanel, Tabs } from '@nwsconnect/atmosphere';
 
 const urlRoot = window.location.origin;
 
@@ -14,6 +14,7 @@ export default function TrainingLayout() {
             <div className="container mx-auto">
               <h1 className="text-2xl font-bold mb-4">State Management Training</h1>
               <div className="flex gap-4">
+             
                 <Link 
                   url={`${urlRoot}/training`}
                   isExternal={false}
@@ -23,11 +24,6 @@ export default function TrainingLayout() {
                 <Link 
                   url={`${urlRoot}/training/context-demo`} isExternal={false}
                   target='_self' >Context Demo</Link>
-                <Link  
-                  url={`${urlRoot}/training//recoil-demo`} 
-                  isExternal={false}
-                  target='_self'
-                  >Recoil Demo</Link>
                 <Link 
                   url={`${urlRoot}/training/zustand-demo`} 
                   isExternal={false}
