@@ -1,7 +1,6 @@
 import { useFetcher } from 'react-router';
 import { useState, useEffect } from 'react';
-import { Modal, IconButton } from '@nwsconnect/atmosphere';
-import type { IconButtonProps } from '@nwsconnect/atmosphere';
+import { Modal, IconButton, Button, Card, CardHeader, CardBody } from '@nwsconnect/atmosphere';
 
 export default function WeatherDashboard() {
   const [data, setData] = useState<any>(null);
@@ -81,19 +80,19 @@ export default function WeatherDashboard() {
               </p>
             </div>
             <div className="flex items-center space-x-3">
-              <button
-                onClick={() => window.location.reload()}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"
+              <Button
+                onPress={() => window.location.reload()}
+                className=""
               >
                 Refresh Data
-              </button>
-              <button
-                onClick={handleCreateEvent}
-                disabled={fetcher.state === 'submitting'}
-                className="bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg text-sm font-medium"
+              </Button>
+              <Button
+                onPress={handleCreateEvent}
+                isDisabled={fetcher.state === 'submitting'}
+                className=""
               >
                 {fetcher.state === 'submitting' ? 'Creating...' : 'Create Alert'}
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -171,9 +170,10 @@ export default function WeatherDashboard() {
               <div className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {events.map((event: any) => (
-                    <div
+                    <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                      <div
                       key={event.id}
-                      className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-md transition-shadow cursor-pointer"
+                      className=" hover:shadow-md transition-shadow cursor-pointer"
                       onClick={() => setSelectedEvent(event)}
                     >
                       <div className="flex items-start justify-between mb-3">
@@ -211,15 +211,21 @@ export default function WeatherDashboard() {
                         </div>
                       </div>
                       
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleDeleteEvent(event.id);
-                        }}
-                        className="mt-2 text-xs text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300"
+                      
+                    </div>
+                    <div className="flex justify-self-end mt-4">
+                      <Button
+                      color="destructive"
+                      variant="outlined"
+                      size="sm"
+                      onPress={(e) => {
+                        handleDeleteEvent(event.id);
+                      }}
+                      className="mt-2 text-xs text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300"
                       >
                         Delete Event
-                      </button>
+                      </Button>
+                    </div>
                     </div>
                   ))}
                 </div>
@@ -281,8 +287,8 @@ export default function WeatherDashboard() {
         {/* Event Detail Modal */}
   <Modal isOpen={!!selectedEvent} className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             {selectedEvent ? (
-              <div className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full p-6">
-                <div className="flex justify-between items-start mb-4">
+              <Card className="bg-white dark:bg-gray-800 rounded-lg max-w-md w-full p-6">
+                <CardHeader className="flex justify-between items-start mb-4">
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{selectedEvent.eventType}</h3>
                   <IconButton
                     onPress={() => setSelectedEvent(null)}
@@ -291,8 +297,8 @@ export default function WeatherDashboard() {
                   >
                     <i className="fa-solid fa-xmark-large"></i>
                   </IconButton>
-                </div>
-                <div className="space-y-3 text-sm">
+                </CardHeader>
+                <CardBody className="space-y-3 text-sm">
                   <div>
                     <span className="font-medium">Location:</span> {selectedEvent.location}, {selectedEvent.county}, {selectedEvent.state}
                   </div>
@@ -312,8 +318,8 @@ export default function WeatherDashboard() {
                     <span className="font-medium">Description:</span>
                     <p className="mt-1 text-gray-600 dark:text-gray-400">{selectedEvent.description}</p>
                   </div>
-                </div>
-              </div>
+                </CardBody>
+              </Card>
             ) : null}
         </Modal>
       </div>

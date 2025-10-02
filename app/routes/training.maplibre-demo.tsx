@@ -79,19 +79,19 @@ export default function MapLibreDemo() {
             <div>
               
               <Slider
+                defaultValue={10}
+                fill="amount"
+                
                 label="Zoom Level"
                 minValue={1}
                 maxValue={18}
-                value={mapConfig.zoom}
                 onChange={(value) => {
                   setMapConfig(prev => ({ ...prev, zoom: Array.isArray(value) ? value[0] : value }));
                 }}
-                defaultValue={10}
+                
                 step={1}
                 size="small"
-                fill="amount"
-                compact={true}
-                isEmphasized={true}
+                compact
               />
             </div>
           </div>

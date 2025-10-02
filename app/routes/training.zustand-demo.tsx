@@ -1,6 +1,7 @@
 import { useCounterStore } from '~/stores/counterStore';
 import { useUserStore } from '~/stores/userStore';
 import { useMapStore, useMapCoordinates, useMarkers } from '~/stores/mapStore';
+import { Slider } from '@nwsconnect/atmosphere';
 
 export default function ZustandDemo() {
   return (
@@ -143,7 +144,7 @@ function MapExample() {
                 step="0.0001"
                 value={coordinates.lat}
                 onChange={(e) => updateCoordinates({ lat: parseFloat(e.target.value) })}
-                className="w-full p-1 border rounded text-sm dark:bg-gray-700 dark:border-gray-600"
+                className="w-full p-1 border rounded text-sm"
               />
             </div>
             <div>
@@ -153,20 +154,24 @@ function MapExample() {
                 step="0.0001"
                 value={coordinates.lng}
                 onChange={(e) => updateCoordinates({ lng: parseFloat(e.target.value) })}
-                className="w-full p-1 border rounded text-sm dark:bg-gray-700 dark:border-gray-600"
+                className="w-full p-1 border rounded text-sm"
               />
             </div>
-            <div>
-              <label className="block text-xs">Zoom</label>
-              <input
-                type="range"
-                min="1"
-                max="20"
+            <div className="w-full">
+              <Slider
+                className='w-full'
+                label="Zoom Level"
+                minValue={1}
+                maxValue={20}
                 value={coordinates.zoom}
-                onChange={(e) => updateCoordinates({ zoom: parseInt(e.target.value) })}
-                className="w-full"
+                onChange={(value) => updateCoordinates({ zoom: Array.isArray(value) ? value[0] : value })}
+                defaultValue={10}
+                step={1}
+                size="medium"
+                fill="amount"
+                compact
               />
-              <span className="text-xs">{coordinates.zoom}</span>
+              
             </div>
           </div>
         </div>
