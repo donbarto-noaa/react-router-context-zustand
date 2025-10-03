@@ -1,8 +1,18 @@
-import { Button, Badge, Card, CardHeader, CardBody, CardFooter, SearchField } from '@nwsconnect/atmosphere';
+import { useState } from 'react';
+import { Button, Badge, Card, CardHeader, CardBody, CardFooter, SearchField, QuietSelect, PhoneField } from '@nwsconnect/atmosphere';
 import '@nwsconnect/atmosphere/style.css';
 
 
 export default function TestAtmosphere() {
+  const [country, setCountry] = useState('us');
+  const [value, setValue] = useState('');
+  const [selectedKey, setSelectedKey] = useState('');
+  
+    const handleSelectionChange = (key) => {
+      setSelectedKey(key);
+      console.log('Selected Key:', key);
+    };
+
   return (
     <div className="p-8">
       <h1 className="text-2xl mb-4">Atmosphere Library Test</h1>
@@ -16,7 +26,7 @@ export default function TestAtmosphere() {
         
         <div>
           <h2 className="text-lg mb-2">Badges</h2>
-          <div className='w-50 px-2 py-2 m-5'>
+          <div className='w-40 px-2 py-2 m-5'>
             <Badge icon="circle-check" label="Approved" size="md" variant='informative' />
             <Badge variant='positive' icon='circle-plus' label="Another Badge" />
           </div>
@@ -35,6 +45,21 @@ export default function TestAtmosphere() {
             </CardHeader>
             <CardBody>
              Card content
+             <QuietSelect 
+                selectedKey={selectedKey} 
+                placeholder='Option' 
+                onSelectionChange={(selectedKey) => handleSelectionChange(selectedKey)}
+                items={[{ id: 'Option 1', name: 'Option 1' }, { id: 'Option 2', name: 'Option 2' }]} 
+              />
+              <div className="w-80">
+                <PhoneField
+                label='Phone number'
+                country={country}
+                value={value}
+                onCountryChange={setCountry}
+                onChange={(e) => setValue(e.target.value)}
+              />
+              </div>
             </CardBody>
             <CardFooter>
               <div className='text-base font-normal'>Footer Content</div>
