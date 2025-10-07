@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Badge, Card, CardHeader, CardBody, CardFooter, SearchField, QuietSelect, PhoneField } from '@nwsconnect/atmosphere';
+import { Button, Badge, Card, CardHeader, CardBody, CardFooter, SearchField, QuietSelect, PhoneField, RangeCalendar } from '@nwsconnect/atmosphere';
 import '@nwsconnect/atmosphere/style.css';
 
 
@@ -7,6 +7,7 @@ export default function TestAtmosphere() {
   const [country, setCountry] = useState('us');
   const [value, setValue] = useState('');
   const [selectedKey, setSelectedKey] = useState('');
+  const [dateRange, setDateRange] = useState(null);
   
     const handleSelectionChange = (key) => {
       setSelectedKey(key);
@@ -55,11 +56,17 @@ export default function TestAtmosphere() {
                 <PhoneField
                 label='Phone number'
                 country={country}
+                onlyCountries={['us', 'gb', 'ca', 'mx', 'au']}
                 value={value}
                 onCountryChange={setCountry}
                 onChange={(e) => setValue(e.target.value)}
               />
               </div>
+              <RangeCalendar
+                aria-label="Select date range"
+                value={dateRange}
+                onChange={setDateRange}
+              />
             </CardBody>
             <CardFooter>
               <div className='text-base font-normal'>Footer Content</div>

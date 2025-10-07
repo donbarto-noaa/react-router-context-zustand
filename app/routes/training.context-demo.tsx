@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useTheme } from '~/contexts/ThemeContext';
 import { useAuth } from '~/contexts/AuthContext';
-import { ToggleButton, Button, TextField, useToast, Link } from '@nwsconnect/atmosphere';
+import { ToggleButton, Button, TextField, useToast, Link, Switch } from '@nwsconnect/atmosphere';
 
 const urlRoot = window.location.origin;
 
@@ -54,6 +54,14 @@ export default function ContextDemo() {
         >
           Toggle Theme
         </ToggleButton>
+        <div className="flex flex-col gap-4">
+          <Switch 
+            onChange={toggleTheme}
+            isEmphasized
+            size="md">          
+            Toggle Dark Mode
+          </Switch>
+        </div>
         <div className="mt-4 p-4 bg-white dark:bg-gray-700 rounded border">
           <p className="text-sm">
             This demonstrates Context for infrequently changing global state.
