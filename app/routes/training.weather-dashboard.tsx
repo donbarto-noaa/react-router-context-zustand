@@ -1,6 +1,6 @@
 import { useFetcher } from 'react-router';
 import { useState, useEffect } from 'react';
-import { Modal, IconButton, Button, Card, CardHeader, CardBody } from '@nwsconnect/atmosphere';
+import { Modal, IconButton, Button, Card, CardHeader, CardBody, CardFooter } from '@nwsconnect/atmosphere';
 
 export default function WeatherDashboard() {
   const [data, setData] = useState<any>(null);
@@ -107,8 +107,8 @@ export default function WeatherDashboard() {
                 <div className="w-6 h-6 text-red-600 dark:text-red-400">🚨</div>
               </div>
               <div className="ml-3">
-                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Active Events</p>
-                <p className="text-2xl font-semibold text-gray-900 dark:text-white">
+                <p className="text-sm font-medium text-atm-text-negative">Active Events</p>
+                <p className="text-2xl font-semibold text-atm-text-negative dark:text-white">
                   {events.filter((e: any) => e.status === 'Active').length}
                 </p>
               </div>
@@ -121,8 +121,8 @@ export default function WeatherDashboard() {
                 <div className="w-6 h-6 text-yellow-600 dark:text-yellow-400">⚠️</div>
               </div>
               <div className="ml-3">
-                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Warnings</p>
-                <p className="text-2xl font-semibold text-gray-900 dark:text-white">
+                <p className="text-sm font-medium text-atm-text-warning">Warnings</p>
+                <p className="text-2xl font-semibold text-atm-text-warning dark:text-white">
                   {events.filter((e: any) => e.status === 'Warning').length}
                 </p>
               </div>
@@ -135,8 +135,8 @@ export default function WeatherDashboard() {
                 <div className="w-6 h-6 text-blue-600 dark:text-blue-400">🌡️</div>
               </div>
               <div className="ml-3">
-                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Stations</p>
-                <p className="text-2xl font-semibold text-gray-900 dark:text-white">{stations.length}</p>
+                <p className="text-sm font-medium text-atm-text-accent">Stations</p>
+                <p className="text-2xl font-semibold text-atm-text-accent">{stations.length}</p>
               </div>
             </div>
           </div>
@@ -147,8 +147,8 @@ export default function WeatherDashboard() {
                 <div className="w-6 h-6 text-green-600 dark:text-green-400">✅</div>
               </div>
               <div className="ml-3">
-                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Resolved</p>
-                <p className="text-2xl font-semibold text-gray-900 dark:text-white">
+                <p className="text-sm font-medium text-atm-text-positive">Resolved</p>
+                <p className="text-2xl font-semibold text-atm-text-positive">
                   {events.filter((e: any) => e.status === 'Resolved').length}
                 </p>
               </div>
@@ -170,13 +170,13 @@ export default function WeatherDashboard() {
               <div className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {events.map((event: any) => (
-                    <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                    <Card className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg" 
+                      key={event.id} >
                       <div
-                      key={event.id}
                       className=" hover:shadow-md transition-shadow cursor-pointer"
                       onClick={() => setSelectedEvent(event)}
                     >
-                      <div className="flex items-start justify-between mb-3">
+                      <CardHeader className="flex items-start justify-between mb-3">
                         <div className="flex items-center space-x-2">
                           <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm">
                             {event.eventType === 'Tornado' ? '🌪️' :
@@ -198,22 +198,22 @@ export default function WeatherDashboard() {
                         }`}>
                           {event.status}
                         </span>
-                      </div>
+                      </CardHeader>
                       
-                      <div className="space-y-1 text-xs text-gray-600 dark:text-gray-400">
+                      <CardBody className="space-y-1 text-xs text-gray-600 dark:text-gray-400">
                         <div className="flex items-center">
-                          <span className="w-3 h-3 mr-1">📍</span>
-                          {event.location}, {event.county}, {event.state}
+                          <span className="w-3 h-3 mr-1">📍 </span>
+                          &nbsp;{event.location}, {event.county}, {event.state}
                         </div>
                         <div className="flex items-center">
                           <span className="w-3 h-3 mr-1">📅</span>
-                          {new Date(event.date).toLocaleDateString()}
+                          &nbsp;{new Date(event.date).toLocaleDateString()}
                         </div>
-                      </div>
+                      </CardBody>
                       
                       
                     </div>
-                    <div className="flex justify-self-end mt-4">
+                    <CardFooter className="flex mt-4">
                       <Button
                       color="destructive"
                       variant="outlined"
@@ -225,8 +225,8 @@ export default function WeatherDashboard() {
                       >
                         Delete Event
                       </Button>
-                    </div>
-                    </div>
+                    </CardFooter>
+                    </Card>
                   ))}
                 </div>
               </div>
@@ -274,11 +274,11 @@ export default function WeatherDashboard() {
             <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg border border-green-200 dark:border-green-700">
               <h3 className="font-medium text-green-900 dark:text-green-100 mb-2">🎯 MSW Exercise Complete!</h3>
               <ul className="text-sm text-green-800 dark:text-green-200 space-y-1">
-                <li>✅ Loader function fetching mock data</li>
-                <li>✅ Dynamic mock responses with Faker</li>
-                <li>✅ CRUD operations (Create/Delete)</li>
-                <li>✅ Error handling and loading states</li>
-                <li>✅ Real-time data refresh</li>
+                <li key="1">✅ Loader function fetching mock data</li>
+                <li key="2">✅ Dynamic mock responses with Faker</li>
+                <li key="3">✅ CRUD operations (Create/Delete)</li>
+                <li key="4">✅ Error handling and loading states</li>
+                <li key="5">✅ Real-time data refresh</li>
               </ul>
             </div>
           </div>
