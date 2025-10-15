@@ -41,30 +41,33 @@ export default function WeatherDashboard() {
   
   const { events, stations, timestamp } = data;
 
-  const handleCreateEvent = () => {
-    fetcher.submit(
-      {
-        eventType: 'Manual Alert',
-        eventMagnitude: '3.5',
-        location: 'Training Location',
-        status: 'Active'
-      },
-      {
+  const handleCreateEvent = async () => {
+    try {
+      await fetch('/api/weather-events', {
         method: 'POST',
-        action: '/api/weather-events',
-        encType: 'application/json'
-      }
-    );
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          eventType: 'Manual Alert',
+          eventMagnitude: '3.5',
+          location: 'Training Location',
+          status: 'Active'
+        })
+      });
+      window.location.reload();
+    } catch (error) {
+      console.error('Failed to create event:', error);
+    }
   };
 
-  const handleDeleteEvent = (eventId: string) => {
-    fetcher.submit(
-      {},
-      {
-        method: 'DELETE',
-        action: `/api/weather-events/${eventId}`
-      }
-    );
+  const handleDeleteEvent = async (eventId: string) => {
+    try {
+      await fetch(`/api/weather-events/${eventId}`, {
+        method: 'DELETE'
+      });
+      window.location.reload();
+    } catch (error) {
+      console.error('Failed to delete event:', error);
+    }
   };
 
   return (
@@ -88,10 +91,9 @@ export default function WeatherDashboard() {
               </Button>
               <Button
                 onPress={handleCreateEvent}
-                isDisabled={fetcher.state === 'submitting'}
                 className=""
               >
-                {fetcher.state === 'submitting' ? 'Creating...' : 'Create Alert'}
+                Create Alert
               </Button>
             </div>
           </div>

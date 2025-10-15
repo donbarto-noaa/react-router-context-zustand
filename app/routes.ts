@@ -4,6 +4,7 @@ export default [
     index("routes/_index.tsx"),
     route("test-atmosphere", "routes/test-atmosphere.tsx"),
     route("toast-demo", "routes/toast-demo.tsx"),
+
     route("training", "routes/training.tsx", [
       index("routes/training._index.tsx"),
       route("context-demo", "routes/training.context-demo.tsx"),
