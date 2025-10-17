@@ -220,7 +220,7 @@ export default function WeatherDashboard() {
                       color="destructive"
                       variant="outlined"
                       size="sm"
-                      onPress={(e) => {
+                      onPress={() => {
                         handleDeleteEvent(event.id);
                       }}
                       className="mt-2 text-xs text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300"
